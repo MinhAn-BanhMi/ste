@@ -121,7 +121,7 @@ def tensor_to_np(tensor, cut_dim_to_3=True):
 def np_to_tensor(npy, space):
     if space == 'vgg':
         return np_to_tensor_correct(npy)
-    return (torch.Tensor(npy.astype(np.float) / 127.5) - 1.0).permute((2, 0, 1)).unsqueeze(0)
+    return (torch.Tensor(npy.astype(np.float64) / 127.5) - 1.0).permute((2, 0, 1)).unsqueeze(0)
 
 
 def np_to_tensor_correct(npy):
@@ -190,10 +190,10 @@ def spatial_feature_extract(feat_result, feat_content, xx, xy):
             xy = xy / 2.0
 
         # go back to ints and get residual
-        xxm = np.floor(xx).astype(np.float32)
+        xxm = np.floor(xx).astype(np.float6432)
         xxr = xx - xxm
 
-        xym = np.floor(xy).astype(np.float32)
+        xym = np.floor(xy).astype(np.float6432)
         xyr = xy - xym
 
         # do bilinear resample
