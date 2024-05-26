@@ -190,10 +190,10 @@ def spatial_feature_extract(feat_result, feat_content, xx, xy):
             xy = xy / 2.0
 
         # go back to ints and get residual
-        xxm = np.floor(xx).astype(np.float6432)
+        xxm = np.floor(xx).astype(np.float64)
         xxr = xx - xxm
 
-        xym = np.floor(xy).astype(np.float6432)
+        xym = np.floor(xy).astype(np.float64)
         xyr = xy - xym
 
         # do bilinear resample
